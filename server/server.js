@@ -10,6 +10,8 @@ import http from 'http';
 import ReactDOM from 'react-dom/server';
 import React from 'react';
 import Html from './Html';
+import r from 'rethinkdb';
+import dbConnectionMiddleware from './middlewares/database';
 
 const {env} = process;
 const app = new Express();
@@ -56,6 +58,19 @@ app.get('/',  (req, res)=>{
     ReactDOM.renderToString(<Html/>));
 });
 
+
+app.get('/reservations', dbConnectionMiddleware, (req, res) => {
+  const conn = req.rConn;
+
+  r.db('danabel').table('reservations').run(conn)
+    .then((cursor) => {
+      return cursor.toArray();
+    })
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((err) => res.json({ error: err }));
+});
 
 server.listen(env.PORT, err=> {
   if (err) console.error(err);
