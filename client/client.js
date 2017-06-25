@@ -12,10 +12,12 @@ import {
 
 ReactDOM.render(
   <Router>
-    <Switch>
+    <div>
       <App/>
-      <Route  path='/' component={Index}/>
-      <Route path='/photos' component={Photos}/>
-    </Switch>
+      <Switch>
+        <Route exact path='/' component={Index}/>
+        <Route path='/photos' component={Photos}/>
+      </Switch>
+    </div>
   </Router>
 , document.getElementById('content'));
