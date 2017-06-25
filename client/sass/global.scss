@@ -1,0 +1,110 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+@font-face {
+   font-family: "Myriad Set Pro";
+   font-style: normal;
+   font-weight: 100;
+   src: url("../fonts/myriad-set-pro-ultralight.woff") format("woff");
+ }
+ @font-face {
+   font-family: "Myriad Set Pro";
+   font-style: normal;
+   font-weight: 200;
+   src: url("../fonts/myriad-set-pro-thin.woff") format("woff");
+ }
+ @font-face {
+   font-family: "Myriad Set Pro";
+   font-style: normal;
+   font-weight: 400;
+   src: url("../fonts/myriad-set-pro-text.woff") format("woff");
+ }
+ @font-face {
+   font-family: "Myriad Set Pro";
+   font-style: normal;
+   font-weight: 600;
+   src: url("../fonts/myriad-set-pro-semibold.woff") format("woff");
+ }
+ *,
+ *:after,
+ *:before {
+   box-sizing: border-box;
+ }
+ body {
+   font-size: 16px;
+   font-family: "Myriad Set Pro";
+   -webkit-font-smoothing: antialiased;
+   min-height: 100%;
+   background-color: #F5F5F5;
+   color: #1A1919;
+   margin: 0;
+   padding: 0;
+   @media screen and (min-width: 1200px) {
+     margin: 0 auto;
+   }
+ }
+
+html, body{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(236, 236, 234);
+  font-weight: 100;
+}
+
+.nav-bar{
+  ul{
+    padding: 20px;
+    text-align: center;
+    li {
+      margin: 20px;
+      display: inline-block;
+
+      a{
+        text-decoration: none;
+        font-size: 30px;
+        color: #1a1a1a;
+      }
+    }
+  }
+}
