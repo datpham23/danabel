@@ -3,7 +3,6 @@ var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin");
 var path = require('path');
 var webpack = require('webpack');
 var CleanPlugin = require('clean-webpack-plugin');
-var strip = require('strip-loader');
 
 var projectRootPath = path.resolve(__dirname, '../');
 var assetsPath = path.resolve(projectRootPath, './static/dist');
@@ -30,7 +29,7 @@ module.exports = {
       { test: /\.jsx?$/, include:  [
         path.resolve(__dirname, '..','client'),
         './client/theme/bootstrap.config.js',
-        './client/theme/font-awesome.config.js'], loaders: [strip.loader('debug'), 'babel']},
+        './client/theme/font-awesome.config.js'], loaders: ['babel']},
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader!autoprefixer-loader?browsers=last 10 version' },
       { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader!autoprefixer-loader?browsers=last 10 version' },
