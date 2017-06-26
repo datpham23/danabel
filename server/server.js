@@ -10,8 +10,8 @@ import http from 'http';
 import ReactDOM from 'react-dom/server';
 import React from 'react';
 import Html from './Html';
-import Reservations from './lib/reservations';
-import dbConnectionMiddleware from './middlewares/database';
+
+import Reservations from './routes/reservations';
 
 const {env} = process;
 const app = new Express();
@@ -58,30 +58,7 @@ app.get('/',  (req, res)=>{
     ReactDOM.renderToString(<Html/>));
 });
 
-
-app.get('/reservations', dbConnectionMiddleware, (req, res) => {
-  const conn = req.rConn;
-
-  Reservations.getAllReservations(conn)
-    .then((results) => {
-      res.json(results);
-    })
-    .catch((err) => res.json({ error: err }));
-});
-
-app.post('/reservations', dbConnectionMiddleware, (req, res) => {
-  const conn = req.rConn;
-
-  const reservation = req.body;
-
-  const email = reservation.email;
-
-  Reservations.getReservationsByEmail(conn, email)
-    .then((results) => {
-      res.json(results);
-    })
-    .catch((err) => res.json({ error: err }));
-});
+app.use('/reservations', Reservations);
 
 server.listen(env.PORT, err=> {
   if (err) console.error(err);
