@@ -76,19 +76,14 @@ table {
    font-family: "Myriad Set Pro";
    -webkit-font-smoothing: antialiased;
    min-height: 100%;
-   background-color: #F5F5F5;
    color: #1A1919;
    margin: 0;
    padding: 0;
-   @media screen and (min-width: 1200px) {
-     margin: 0 auto;
-   }
  }
 
 html, body{
   width: 100%;
   height: 100%;
-  background-color: rgb(236, 236, 234);
   font-weight: 100;
 }
 
@@ -102,8 +97,12 @@ html, body{
 
       a{
         text-decoration: none;
-        font-size: 30px;
-        color: #1a1a1a;
+        font-size: 40px;
+        color: white;
+
+        &.active{
+          border-bottom: 2px solid rgba(250, 243, 243, 0.66)
+        }
       }
     }
   }

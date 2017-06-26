@@ -9,12 +9,12 @@ export default class App extends Component {
         <nav className='nav-bar'>
           <ul>
             <li>
-              <NavLink to='/' className='nav-item' activeClassName='active'>
+              <NavLink to='/' exact className='nav-item' activeClassName='active'>
                 Details
               </NavLink>
             </li>
             <li>
-              <NavLink to='/photos' className='nav-item' activeClassName='active'>
+              <NavLink to='/photos' exact className='nav-item' activeClassName='active'>
                 Photos
               </NavLink>
             </li>
