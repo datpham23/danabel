@@ -10,7 +10,7 @@ import http from 'http';
 import ReactDOM from 'react-dom/server';
 import React from 'react';
 import Html from './Html';
-import r from 'rethinkdb';
+import Reservations from './lib/reservations';
 import dbConnectionMiddleware from './middlewares/database';
 
 const {env} = process;
@@ -62,10 +62,21 @@ app.get('/',  (req, res)=>{
 app.get('/reservations', dbConnectionMiddleware, (req, res) => {
   const conn = req.rConn;
 
-  r.db('danabel').table('reservations').run(conn)
-    .then((cursor) => {
-      return cursor.toArray();
+  Reservations.getAllReservations(conn)
+    .then((results) => {
+      res.json(results);
     })
+    .catch((err) => res.json({ error: err }));
+});
+
+app.post('/reservations', dbConnectionMiddleware, (req, res) => {
+  const conn = req.rConn;
+
+  const reservation = req.body;
+
+  const email = reservation.email;
+
+  Reservations.getReservationsByEmail(conn, email)
     .then((results) => {
       res.json(results);
     })
