@@ -11,6 +11,8 @@ import ReactDOM from 'react-dom/server';
 import React from 'react';
 import Html from './Html';
 
+import Reservations from './routes/reservations';
+
 const {env} = process;
 const app = new Express();
 let server = http.createServer(app);
@@ -56,6 +58,7 @@ app.get('/',  (req, res)=>{
     ReactDOM.renderToString(<Html/>));
 });
 
+app.use('/reservations', Reservations);
 
 server.listen(env.PORT, err=> {
   if (err) console.error(err);
