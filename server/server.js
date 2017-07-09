@@ -1,33 +1,23 @@
 require('dotenv').config({silent : false});
-import cors from 'cors';
-import helmet from 'helmet';
 import compression from 'compression';
 import favicon from 'serve-favicon';
 import path from 'path';
-import bodyParser from 'body-parser';
 import Express from 'express';
 import http from 'http';
 import ReactDOM from 'react-dom/server';
 import React from 'react';
 import Html from './Html';
 
-import Reservations from './routes/reservations';
-
 const {env} = process;
 const app = new Express();
 let server = http.createServer(app);
 
-
-app.use(helmet());
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
-app.use(bodyParser.json({limit: '50mb'}));
 app.use((err, req, res, next)=>{
   if (err.code !== 'EBADCSRFTOKEN')
     return next(err);
   res.status(403);
   res.send('Invalid CSRF Token');
 });
-app.use(cors({origin : true}));
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
@@ -53,12 +43,12 @@ if(env.NODE_ENV === 'development'){
 } else app.use(Express.static(path.join(__dirname, '..', 'static'),{ maxAge: 31556900 }));
 
 
+
+app.use('/images', Express.static(path.join(__dirname, '../client/images'),{ maxAge: 31556900 }));
 app.get('/',  (req, res)=>{
   res.send('<!doctype html>\n' +
     ReactDOM.renderToString(<Html/>));
 });
-
-app.use('/reservations', Reservations);
 
 server.listen(env.PORT, err=> {
   if (err) console.error(err);

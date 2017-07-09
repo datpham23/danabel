@@ -24,6 +24,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  background: linear-gradient(0deg, #ffffff 0%, #eeeeee 51%, #c7c6c6 75%);
 }
 ol, ul {
 	list-style: none;
@@ -76,7 +77,6 @@ table {
    font-family: "Myriad Set Pro";
    -webkit-font-smoothing: antialiased;
    min-height: 100%;
-   color: #1A1919;
    margin: 0;
    padding: 0;
  }

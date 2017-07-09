@@ -1,128 +1,59 @@
 .index-page{
-  height: 100vh;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  z-index: -1;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('../images/1.jpg');
-  color: black;
+  .background-image{
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../images/splash.jpg');
+  }
 
   .info-container{
-    width: 100%;
-    margin-top: 45%;
     background-color: white;
+    width: 100%;
+    margin: 50% auto auto 0;
 
+    .date{
+      font-size: 40px;
+      text-align: center;
+      padding: 15px;
+    }
     .panels{
-      margin: 0 30px;
-      // background-color: white;
+      padding: 15px;
       text-align: center;
       .panel{
+        vertical-align: top;
         display: inline-block;
-        width: 33%;
+        width: 50%;
         background-color: white;
-        border: 1px
+        border: 1px;
+
+        &:first-child{
+          border-right: 1px solid #e4e4e4;
+        }
+
+        .title{
+          font-size: 24px;
+          margin-bottom: 15px;
+          font-weight: 200;
+        }
+
+        .text{
+          font-size: 22px;
+          line-height: 25px;
+        }
+
+        .address, .info{
+          width: 50%;
+          display: inline-block;
+        }
+      }
+
+      .map-container{
+        margin-top: 15px;
       }
     }
   }
-
-  table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-td {
-	padding: 0;
-}
-
-.container {
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.calendar-container {
-	position: relative;
-	width: 450px;
-}
-
-.calendar-container header {
-	border-radius: 1em 1em 0 0;
-	background: #e66b6b;
-	color: #fff;
-	padding: 3em 2em;
-}
-
-.day {
-	font-size: 8em;
-	font-weight: 900;
-	line-height: 1em;
-}
-
-.month {
-	font-size: 4em;
-	line-height: 1em;
-	text-transform: lowercase;
-}
-
-.calendar {
-	background: #fff;
-	border-radius: 0 0 1em 1em;
-	-webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
-	box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
-	color: #555;
-	display: inline-block;
-	padding: 2em;
-}
-
-.calendar thead {
-	color: #e66b6b;
-	font-weight: 700;
-	text-transform: uppercase;
-}
-
-.calendar td {
-	padding: .5em 1em;
-	text-align: center;
-}
-
-.calendar tbody td:hover {
-	background: #cacaca;
-	color: #fff;
-}
-
-.current-day {
-	color: #e66b6b;
-}
-
-.prev-month,
-.next-month {
-	color: #cacaca;
-}
-
-.ring-left,
-.ring-right {
-	position: absolute;
-	top: 230px;
-}
-
-.ring-left { left: 2em; }
-.ring-right { right: 2em; }
-
-.ring-left:before,
-.ring-left:after,
-.ring-right:before,
-.ring-right:after {
-	background: #fff;
-	border-radius: 4px;
-	-webkit-box-shadow: 0 3px 1px rgba(0, 0, 0, .3), 0 -1px 1px rgba(0, 0, 0, .2);
-	box-shadow: 0 3px 1px rgba(0, 0, 0, .3), 0 -1px 1px rgba(0, 0, 0, .2);
-	content: "";
-	display: inline-block;
-	margin: 8px;
-	height: 32px;
-	width: 8px;
-}
 }
