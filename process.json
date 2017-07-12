@@ -6,14 +6,14 @@
       "script": "./server/server.js",
       "restart_delay": 5000,
       "watch": true,
-      "ignore_watch" : ["client","static","rethinkdb_data"],
+      "ignore_watch" : ["client", "static"],
       "log_date_format" : "YYYY-MM-DD HH:mm Z",
       "env": {
          "PORT": 3000,
          "NODE_ENV": "development"
        },
       "env_production": {
-         "PORT": 80,
+         "PORT": 8080,
          "NODE_ENV": "production"
        }
     }
