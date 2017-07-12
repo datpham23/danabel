@@ -5,8 +5,5 @@ dist/
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
-app.log
-response-cache/
-build-env.log
-rethinkdb_data
 *.log
+lib
