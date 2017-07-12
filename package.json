@@ -4,8 +4,7 @@
   "version": "0.3.2",
   "scripts": {
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
-    "start": "pm2 start process.json --no-daemon",
-    "start-prod": "pm2 start process.json --env production --no-daemon"
+    "start": "pm2 start process.json --no-daemon --watch"
   },
   "dependencies": {
     "aphrodite": "^1.2.1",

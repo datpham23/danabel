@@ -12,6 +12,7 @@ export default class Html extends Component {
         </head>
         <body>
           <div id='content'/>
+          <script src={`dist/common.js`} charSet='UTF-8'/>
           <script src={`dist/main.js`} charSet='UTF-8'/>
         </body>
       </html>
