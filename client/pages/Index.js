@@ -18,7 +18,7 @@ export default class Home extends Component {
               <p className='text'>&nbsp;</p>
               <div className='map-container'>
                 <iframe
-                  width='600'
+                  width={window.innerWidth/2 - 100}
                   height='450'
                   frameBorder='0'
                   src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCoFEmQcNGqdL19yG1K4JUfQbcOo27Y00U&q=4957+Collomia+Court,+San+Jose,+CA+95111'
@@ -35,7 +35,7 @@ export default class Home extends Component {
               </address>
               <div className='map-container'>
                 <iframe
-                  width='600'
+                  width={window.innerWidth/2 - 100}
                   height='450'
                   frameBorder='0'
                   src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCoFEmQcNGqdL19yG1K4JUfQbcOo27Y00U&q=410+Vineyard+Ave,+Pleasanton,+CA+94566'

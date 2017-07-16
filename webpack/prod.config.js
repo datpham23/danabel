@@ -160,16 +160,11 @@ module.exports = {
     extensions: ['.json', '.js', '.jsx']
   },
   plugins: [
-    new CommonsPlugin({
-      minChunks: 3,
-      name: "common"
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
-
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({

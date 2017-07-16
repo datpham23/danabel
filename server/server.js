@@ -56,7 +56,7 @@ app.get('/gallery/images',(req, res)=>{
     res.json(files);
   });
 });
-app.get('/',  (req, res)=>{
+app.get('*',  (req, res)=>{
   res.send('<!doctype html>\n' +
     ReactDOM.renderToString(<Html/>));
 });

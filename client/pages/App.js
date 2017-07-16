@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router';
 import '../sass/global.scss';
 
 export default class App extends Component {
@@ -9,23 +9,24 @@ export default class App extends Component {
         <nav className='nav-bar'>
           <ul>
             <li>
-              <NavLink to='/'
-                exact className='nav-item'
+              <Link to='/index'
+                className='nav-item'
                 activeClassName='active'
               >
                 Details
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink to='/photos'
-                exact className='nav-item'
+              <Link to='/photos'
+                className='nav-item'
                 activeClassName='active'
               >
                 Photos
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </nav>
+        {this.props.children}
       </div>
     );
   }
