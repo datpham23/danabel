@@ -1,27 +1,22 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createHistory} from 'history';
-import App from 'pages/App';
-import Index from 'pages/Index';
-import IndexMobile from 'pages/IndexMobile';
-import Photos from 'pages/Photos';
-import {
-  Router,
-  Route,
-  Redirect
-} from 'react-router';
+import Routes from './routes';
+import {AppContainer} from 'react-hot-loader';
 
-const isSmallScreenSize = ()=>{
-  return window.innerWidth <= 800;
+if (module.hot) {
+	module.hot.accept('./routes', () => {
+		render();
+	});
+}
+
+const render = () => {
+	ReactDOM.render(
+		<AppContainer>
+			<Routes />
+		</AppContainer>,
+		document.getElementById('content')
+	);
 };
 
-ReactDOM.render(
-  <Router history={createHistory()}>
-    <Redirect from='/' to='index'/>
-    <Route path='/' component={App}>
-      <Route path='index' component={isSmallScreenSize()? IndexMobile : Index}/>
-      <Route path='photos' component={Photos}/>
-    </Route>
-  </Router>
-, document.getElementById('content'));
+render();

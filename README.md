@@ -1,16 +1,20 @@
-# Danabel
+# Hit token
 
 ## Requirements
 * Node.js 6.x.x
 
-## Setup
+## Start development
 
 ```bash
 $ npm install
 $ npm run build
 $ npm start
+```
 
-or cluster mode
-$ NODE_ENV=production PORT=8080 pm2 start lib/server.js -i 2
+## Run in production mode
 
+```bash
+$ npm install
+$ npm run build
+$ npm run start-prod
 ```

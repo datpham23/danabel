@@ -8,44 +8,6 @@ var webpack = require('webpack');
 var assetsPath = path.resolve(__dirname, '../static/dist');
 
 
-var babelrc = fs.readFileSync('./.babelrc');
-var babelrcObject = {};
-
-try {
-  babelrcObject = JSON.parse(babelrc);
-} catch (err) {
-  console.error('==>     ERROR: Error parsing your .babelrc.');
-  console.error(err);
-}
-
-var babelrcObjectDevelopment = babelrcObject.env && babelrcObject.env.development || {};
-
-var combinedPlugins = babelrcObject.plugins || [];
-combinedPlugins = combinedPlugins.concat(babelrcObjectDevelopment.plugins);
-
-var babelLoaderQuery = Object.assign({}, babelrcObjectDevelopment, babelrcObject, {plugins: combinedPlugins});
-delete babelLoaderQuery.env;
-
-babelLoaderQuery.presets[0] = ["es2015", { "modules": false }]
-
-babelLoaderQuery.plugins = babelLoaderQuery.plugins || [];
-var reactTransform = null;
-for (var i = 0; i < babelLoaderQuery.plugins.length; ++i) {
-  var plugin = babelLoaderQuery.plugins[i];
-  if (Array.isArray(plugin) && plugin[0] === 'react-transform') {
-    reactTransform = plugin;
-  }
-}
-
-if (!reactTransform) {
-  reactTransform = ['react-transform', {transforms: []}];
-  babelLoaderQuery.plugins.push(reactTransform);
-}
-
-if (!reactTransform[1] || !reactTransform[1].transforms) {
-  reactTransform[1] = Object.assign({}, reactTransform[1], {transforms: []});
-}
-
 module.exports = {
   devtool: 'nosources-source-map',
   context: path.resolve(__dirname, '..'),
@@ -67,8 +29,7 @@ module.exports = {
         include:  [
           path.resolve(__dirname, '..','client'),
         ],
-        loader: 'babel-loader',
-        options: babelLoaderQuery
+        loader: 'babel-loader'
       },
       {
         test: /\.js$/,
@@ -166,7 +127,6 @@ module.exports = {
       }
     }),
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       output: {comments: false},
       sourceMap : false,

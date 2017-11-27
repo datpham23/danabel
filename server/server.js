@@ -6,7 +6,6 @@ import Express from 'express';
 import http from 'http';
 import ReactDOM from 'react-dom/server';
 import React from 'react';
-import fs from 'fs';
 import Html from './Html';
 
 const {env} = process;
@@ -44,18 +43,6 @@ if(env.NODE_ENV === 'development'){
 } else app.use(Express.static(path.join(__dirname, '..', 'static'),{ maxAge: 31556900 }));
 
 
-
-app.use('/images', Express.static(path.join(__dirname, '../client/images'),{ maxAge: 31556900 }));
-app.get('/gallery/images',(req, res)=>{
-  fs.readdir(path.join(__dirname,'../client/images/gallery'), (err, files) => {
-    if(err){
-      console.error(err);
-      res.status(500);
-      res.send('Unable to fetch filenames');
-    }
-    res.json(files);
-  });
-});
 app.get('*',  (req, res)=>{
   res.send('<!doctype html>\n' +
     ReactDOM.renderToString(<Html/>));
